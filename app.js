@@ -1,18 +1,25 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 
-let listaAmigos = [];
+let amigos = [];
 
 function agregarAmigo() {
-   
-    let miAmigo = document.getElementById('amigo').value;
-   
-    listaAmigos.push(miAmigo);
-    console.log(listaAmigos,length);
-    //console.log(listaAmigos[0]);
-    amigos();
-    limpiarCaja();
-   
-    return
+
+    let nombre = document.getElementById('amigo');
+    let listaAmigos = document.querySelector("ul");
+       
+    amigos.push(nombre.value);
+    console.log(amigos);
+
+    let liAmigo = document.createElement('li');
+    
+    for (let i=0; i<amigos.length; i++){
+
+        liAmigo.textContent = amigos[i];
+        listaAmigos.appendChild(liAmigo);
+    
+   }
+
+   limpiarCaja();
 
 }
 
@@ -21,27 +28,20 @@ function limpiarCaja() {
     document.querySelector('#amigo').value ='';
 
 }
+   
+function sortearAmigo(){
+  
 
-function amigos() {
+    let amigoSecreto = Math.floor(Math.random()* amigos.length);
 
-    let listado = document.getElementById('listaAmigos');
-    listaAmigos.innerHTML = '';
+    console.log(amigoSecreto);
 
-    for (const amigo of listaAmigos) {
-        
-        let nombre = document.createElement('li');
-        listaAmigos.innerHTML += '';
-        nombre.innerText = amigo;
-        
-        listado.appendChild(nombre);
-      
-    } 
+    let resultado = document.querySelector("ul");
+    let liGanador = document.createElement('li');
 
-    return
+    resultado.textContent = "";
+
+    liGanador.textContent = amigos[amigoSecreto];
+    resultado.appendChild(liGanador);
 
 }
-
-agregarAmigo();
-
-
-
